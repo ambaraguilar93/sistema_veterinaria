@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/style.css">
+</head>
+
+<body>
+    <h1 th:text="|Bienvenido a ${name}!|"></h1>
+
+    <div sec:authorize="!isAuthenticated()">
+
+        <h1>Sistema de Veterinaria</h1>
+        <h2>Seguridad implementada con Spring Security</h2>
+
+        <p>Para acceder debes iniciar sesión.</p>
+
+        <a th:href="@{/login}">
+            <button>Ir a Login</button>
+        </a>
+
+    </div>
+
+
+    <div sec:authorize="isAuthenticated()">
+        <h1 th:inline="text">Hola <span th:remove="tag" sec:authentication="name"></span>!</h1>
+        <h2>Seguridad implementada con Spring Security</h2>
+
+        <hr>
+
+        <h3>Gestión de Pacientes</h3>
+
+        <!-- Botón para registrar paciente -->
+        <a th:href="@{/pacientes/nuevo}">
+            <button>Registrar nuevo paciente</button>
+        </a>
+
+        <h3>Registros Médicos</h3>
+
+        <a th:href="@{/registros/nuevo}">
+            <button>Registrar diagnóstico</button>
+        </a>
+
+        <br><br>
+
+        <a th:href="@{/registros/lista}">
+            <button>Ver historial médico</button>
+        </a>
+
+        <br><br>
+
+        <!-- Botón para ver pacientes -->
+        <a th:href="@{/pacientes/lista}">
+            <button>Ver pacientes registrados</button>
+        </a>
+
+        <h3>Gestión de Citas</h3>
+
+        <a th:href="@{/citas/nueva}">
+            <button>Programar cita</button>
+        </a>
+
+        <br><br>
+
+        <a th:href="@{/citas/lista}">
+            <button>Ver citas</button>
+        </a>
+    </div>
+
+</body>
+
+</html>

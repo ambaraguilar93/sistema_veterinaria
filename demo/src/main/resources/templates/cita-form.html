@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Programar Cita</title>
+    <link rel="stylesheet" href="/styleformulario.css">
+</head>
+
+<body>
+
+    <h1>Programar Cita</h1>
+
+    <form th:action="@{/citas/guardar}" th:object="${cita}" method="post">
+
+        <label>Paciente</label><br>
+        <input type="text" th:field="*{paciente}" required><br><br>
+
+        <label>Fecha</label><br>
+        <input type="date" th:field="*{fecha}" required><br><br>
+
+        <label>Hora</label><br>
+        <input type="time" th:field="*{hora}" required><br><br>
+
+        <label>Motivo</label><br>
+        <input type="text" th:field="*{motivo}" required><br><br>
+
+        <label>Veterinario</label><br>
+        <input type="text" th:field="*{veterinario}" required><br><br>
+
+        <button type="submit">Guardar Cita</button>
+
+    </form>
+
+    <br>
+
+    <a th:href="@{/citas/lista}">Ver citas registradas</a>
+    <br><br>
+
+    <a th:href="@{/home}">
+        <button type="button">Volver al Home</button>
+    </a>
+
+</body>
+
+</html>

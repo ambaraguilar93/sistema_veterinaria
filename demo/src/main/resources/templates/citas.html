@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Citas Registradas</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+    <h1>Citas Programadas</h1>
+
+    <table border="1" align="center">
+
+        <tr>
+            <th>Paciente</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Motivo</th>
+            <th>Veterinario</th>
+        </tr>
+
+        <tr th:each="c : ${citas}">
+            <td th:text="${c.paciente}"></td>
+            <td th:text="${c.fecha}"></td>
+            <td th:text="${c.hora}"></td>
+            <td th:text="${c.motivo}"></td>
+            <td th:text="${c.veterinario}"></td>
+        </tr>
+
+    </table>
+
+    <br>
+
+    <a th:href="@{/citas/nueva}">Programar nueva cita</a>
+    <br><br>
+
+    <a th:href="@{/home}">
+        <button type="button">Volver al Home</button>
+    </a>
+
+</body>
+
+</html>

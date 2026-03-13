@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Registro Médico</title>
+    <link rel="stylesheet" href="/styleformulario.css">
+</head>
+
+<body>
+
+    <h1>Registro Médico del Paciente</h1>
+
+    <form th:action="@{/registros/guardar}" th:object="${registro}" method="post">
+
+        <label>Paciente</label><br>
+        <input type="text" th:field="*{paciente}" required><br><br>
+
+        <label>Diagnóstico</label><br>
+        <input type="text" th:field="*{diagnostico}" required><br><br>
+
+        <label>Tratamiento</label><br>
+        <input type="text" th:field="*{tratamiento}" required><br><br>
+
+        <label>Medicamento</label><br>
+        <input type="text" th:field="*{medicamento}" required><br><br>
+
+        <label>Notas médicas</label><br>
+        <textarea th:field="*{notas}"></textarea><br><br>
+
+        <button type="submit">Guardar Registro</button>
+
+    </form>
+
+    <br><br>
+
+    <a th:href="@{/home}">
+        <button type="button">Volver al Home</button>
+    </a>
+
+</body>
+
+</html>
