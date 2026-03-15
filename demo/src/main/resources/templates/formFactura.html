@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Nueva Factura</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/styleformulario.css">
+</head>
+
+<body>
+
+    <h1>Generar Factura</h1>
+
+    <form th:action="@{/facturas/guardar}" th:object="${factura}" method="post">
+
+        <label>Paciente:</label><br>
+        <input type="text" th:field="*{paciente}" required>
+        <br><br>
+
+        <label>Servicio realizado:</label><br>
+        <input type="text" th:field="*{servicio}" required>
+        <br><br>
+
+        <label>Medicamento:</label><br>
+        <input type="text" th:field="*{medicamento}">
+        <br><br>
+
+        <label>Costo del servicio:</label><br>
+        <input type="number" step="0.01" th:field="*{costoServicio}" required>
+        <br><br>
+
+        <label>Costo del medicamento:</label><br>
+        <input type="number" step="0.01" th:field="*{costoMedicamento}">
+        <br><br>
+
+        <label>Otros cargos:</label><br>
+        <input type="number" step="0.01" th:field="*{otrosCargos}">
+        <br><br>
+
+        <button type="submit">Guardar Factura</button>
+
+    </form>
+
+    <br>
+
+    <a th:href="@{/facturas/lista}">
+        <button>Ver facturas</button>
+    </a>
+
+    <br><br>
+
+    <a th:href="@{/}">
+        <button>Volver al inicio</button>
+    </a>
+
+</body>
+
+</html>

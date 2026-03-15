@@ -31,4 +31,13 @@ public class RegistroMedicoController {
         model.addAttribute("registros", registros);
         return "registros";
     }
+
+    @GetMapping("/editar/{id}")
+    public String editar(@PathVariable int id, Model model) {
+
+        RegistroMedico registro = BaseDatosMemoria.registros.get(id - 1);
+
+        model.addAttribute("registro", registro);
+        return "formRegistro";
+    }
 }

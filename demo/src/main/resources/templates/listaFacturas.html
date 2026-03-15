@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Lista de Facturas</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/styleformulario.css">
+</head>
+
+<body>
+
+    <h1>Facturas generadas</h1>
+
+    <table border="1" align="center">
+
+        <tr>
+            <th>ID</th>
+            <th>Paciente</th>
+            <th>Servicio</th>
+            <th>Medicamento</th>
+            <th>Total</th>
+        </tr>
+
+        <tr th:each="factura : ${facturas}">
+            <td th:text="${factura.id}"></td>
+            <td th:text="${factura.paciente}"></td>
+            <td th:text="${factura.servicio}"></td>
+            <td th:text="${factura.medicamento}"></td>
+            <td th:text="${factura.total}"></td>
+        </tr>
+
+    </table>
+
+    <br>
+
+    <a th:href="@{/}">
+        <button>Volver al inicio</button>
+    </a>
+
+</body>
+
+</html>

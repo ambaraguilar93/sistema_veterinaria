@@ -3,7 +3,7 @@
 
 <head>
     <title>Lista de Pacientes</title>
-    <link rel="stylesheet" th:href="@{/style.css}">
+    <link rel="stylesheet" th:href="@{/styleformulario.css}">
 </head>
 
 <body>
@@ -31,8 +31,10 @@
     </table>
 
     <br>
+    <a th:href="@{/pacientes/nuevo}">
+        <button type="button">Registrar nuevo paciente</button>
+    </a>
 
-    <a th:href="@{/pacientes/nuevo}">Registrar nuevo paciente</a>
     <br><br>
 
     <a th:href="@{/home}">

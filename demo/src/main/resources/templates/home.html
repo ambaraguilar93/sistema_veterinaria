@@ -4,7 +4,7 @@
 <head>
     <title>Getting Started: Serving Web Content</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" type="text/css" href="/stylehome.css">
 </head>
 
 <body>
@@ -67,6 +67,24 @@
         <a th:href="@{/citas/lista}">
             <button>Ver citas</button>
         </a>
+
+        <br><br>
+
+        <h3>Facturación</h3>
+
+        <a th:href="@{/facturas/nueva}">
+            <button>Generar factura</button>
+        </a>
+
+        <br><br>
+
+        <a th:href="@{/facturas/lista}">
+            <button>Ver facturas</button>
+        </a>
+
+        <form th:action="@{/logout}" method="post">
+            <button type="submit">Cerrar sesión</button>
+        </form>
     </div>
 
 </body>

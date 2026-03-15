@@ -18,17 +18,31 @@ import org.springframework.context.annotation.Description;
 public class WebSecurityConfig {
 
         @Bean
-        public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+
                 http
-                                .authorizeHttpRequests((requests) -> requests
-                                                .requestMatchers("/", "/home", "/login").permitAll()
-                                                .requestMatchers("/**.css").permitAll()
+                                .authorizeHttpRequests(auth -> auth
+
+                                                // rutas públicas
+                                                .requestMatchers("/", "/login", "/css/**").permitAll()
+
+                                                // rutas privadas
+                                                .requestMatchers("/pacientes/**").authenticated()
+                                                .requestMatchers("/citas/**").authenticated()
+
+                                                // registros médicos (solo veterinario o admin)
+                                                .requestMatchers("/registros/**").hasAnyRole("VETERINARIO", "ADMIN")
+
+                                                // facturación (recepción o admin)
+                                                .requestMatchers("/facturas/**").hasAnyRole("RECEPCION", "ADMIN")
+
                                                 .anyRequest().authenticated())
-                                .formLogin((form) -> form
+
+                                .formLogin(form -> form
                                                 .loginPage("/login")
-                                                .defaultSuccessUrl("/home", true)
                                                 .permitAll())
-                                .logout((logout) -> logout.permitAll());
+
+                                .logout(logout -> logout.permitAll());
 
                 return http.build();
         }
